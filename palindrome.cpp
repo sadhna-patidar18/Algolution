@@ -1,23 +1,27 @@
 #include<iostream>
 using namespace std;
 
-int main() {
-    int arr[5]; 
-    cout << "Enter 5 integers:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cin >> arr[i];
-    }
-    bool isPalindrome = true;
-    for (int i = 0; i < 5 / 2; i++) {
-        if (arr[i] != arr[5 - i - 1]) {
-            isPalindrome = false;
-            break;
+bool is_palindrome(int arr[], int n) {
+    int i = 0, j = n - 1;
+    while (i < j) {
+        if (arr[i] != arr[j]) {
+            return false;
         }
+        i++;
+        j--;
     }
-    if (isPalindrome) {
-        cout << "The order of numbers is a palindrome." << endl;
+    return true;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 2, 1};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    if (is_palindrome(arr, n)) {
+        cout << "The array is a palindrome." << endl;
     } else {
-        cout << "The order of numbers is not a palindrome." << endl;
+        cout << "The array is not a palindrome." << endl;
     }
+
     return 0;
 }
